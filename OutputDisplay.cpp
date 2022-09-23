@@ -36,23 +36,26 @@ void OutClass::SETUP(){
 }
 
 bool OutClass::story() {
+  //declare and initialize boolean variable for program control 
   bool continuegame = true;
   
   do{ 
 
-     
+    //returns boolean and loops through story 
     continuegame = NStory.myStory();
     
     } while (continuegame);
 
   continuegame = true;
-
+  
+  
   return (continuegame);
 }
 
 
-void OutClass::arrowBlink(int moveBtnCount){
     //Moving, Blinking, Selection Arrow
+void OutClass::arrowBlink(int moveBtnCount){
+    //display arrow dependant on user input from InClass
     if (moveBtnCount == 1) {
       display.setCursor(0,24);
       display.setTextSize(1);
@@ -77,11 +80,12 @@ void OutClass::arrowBlink(int moveBtnCount){
       display.write(16);
       display.display();
     }
-}
+} 
 
+    // main function for display of story Progression 
 void OutClass::displayStory(const char * paths [11],const char * c1[10], const char * c2[10], int i){
     display.clearDisplay();
-    //Start Screen
+    //Path Display
     display.setTextSize(1);
     display.setTextColor(BLACK);
     display.setCursor(0,0);
@@ -100,4 +104,17 @@ void OutClass::displayStory(const char * paths [11],const char * c1[10], const c
     display.println(c2[i]);
     display.display();
   
-  }
+}
+
+  //function to handle single text display paths 
+void OutClass::singleDisplay(const char * relevantmsg[], int j){
+    display.clearDisplay();
+    //Start Screen
+    display.setTextSize(1);
+    display.setTextColor(BLACK);
+    display.setCursor(0,0);
+    display.println(relevantmsg[j]);
+    display.display();
+    delay(2000);
+
+}
