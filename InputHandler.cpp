@@ -9,10 +9,9 @@
 #include <Adafruit_GFX.h>
 #include <Adafruit_PCD8544.h>
 
-
+  //global variables
   const int btnSelect = 11;
   const int btnMove = 10;
-
   boolean buttonMove; 
   boolean buttonSelect;
 
@@ -32,7 +31,7 @@ static int InClass::validateInput () {
   int selectBtnCount = 0;
 
   OutPutDisplay.arrowBlink(moveBtnCount);
-  
+  //loop allows for user input to be read (returns input)
   while (selectBtnCount < 1) {
     buttonMove = digitalRead(btnMove);
     buttonSelect = digitalRead(btnSelect);
@@ -40,6 +39,7 @@ static int InClass::validateInput () {
     if (buttonMove == HIGH){
       moveBtnCount = moveBtnCount + 1;
       Serial.println(moveBtnCount);
+      //changes position of selection arrow
       OutPutDisplay.arrowBlink(moveBtnCount);
     }
     if(buttonSelect == HIGH) {
@@ -54,21 +54,11 @@ static int InClass::validateInput () {
         return selectBtnCount;
       }
     }
-
+    
     if (moveBtnCount == 2) {
         moveBtnCount = 0;
     }
   } 
   
   return selectBtnCount;
-}
-
-
- static int InClass::validateInput3 (){
-  int num;
-
-
-
-  return num;
- 
 }

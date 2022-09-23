@@ -7,6 +7,8 @@ class NClass {
     NClass();
     void SETUP();
     bool myStory();
+    void deathCheck();
+    void boolCheck();
   
 };
 
